@@ -23,11 +23,11 @@ Copy the config.ini-dist file to config.ini, and load it using:
 
 And push changes using:
 
-    erica push $DEV
+    erica push ./* $DEV
 
 Or:
 
-    erica push $PRO
+    erica push ./* $PRO
 
 
 But any other couchapp tool might work.
