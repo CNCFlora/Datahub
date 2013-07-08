@@ -1,0 +1,6 @@
+{
+    "description":"Allows the lookup of published assessments of given taxon with it's flora do brasil identifier.",
+    "key":"The FBID of a taxon.",
+    "refer":"view/by_taxon_fb",
+    "schema": "assessment/assessmentSchema"
+}

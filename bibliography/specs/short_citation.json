@@ -1,0 +1,6 @@
+{
+    "description":"List bibliographies by short citation.",
+    "key":"A short citation",
+    "refer":"view/short_citation",
+    "schema": "biblio/biblioSchema"
+}

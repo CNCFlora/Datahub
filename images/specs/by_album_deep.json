@@ -1,0 +1,7 @@
+{
+    "description":"Display photo by album including deeper resources.",
+    "key":"The path of a album.",
+    "refer":"view/by_album_deep",
+    "schema": "image/imageSchema"
+}
+

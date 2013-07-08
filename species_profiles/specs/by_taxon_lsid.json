@@ -1,0 +1,6 @@
+{
+    "description":"Allows the lookup of published profiles of given taxon lsid.",
+    "key":"The LSID of a taxon.",
+    "refer":"view/by_taxon_lsid",
+    "schema": "profile/profileSchema"
+}

@@ -1,0 +1,6 @@
+{
+    "description":"Describe metadata of any data.",
+    "key":"The LSID of the data.",
+    "refer":"view/metadata",
+    "schema": "metadata/metadataSchema"
+}

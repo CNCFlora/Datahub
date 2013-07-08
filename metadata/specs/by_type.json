@@ -1,0 +1,6 @@
+{
+    "description":"Search for data of given type.",
+    "key":"The type of data.",
+    "refer":"view/by_type",
+    "schema": ""
+}

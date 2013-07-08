@@ -1,0 +1,6 @@
+{
+    "description":"Allows the lookup of published assessments of given taxon.",
+    "key":"The IPNI id of a taxon.",
+    "refer":"view/by_taxon_ipni",
+    "schema": "assessment/assessmentSchema"
+}

@@ -1,0 +1,6 @@
+{
+    "description":"List species by family.",
+    "key":"A family name.",
+    "refer":"view/species_by_family",
+    "schema": "taxon/taxonSchema"
+}
