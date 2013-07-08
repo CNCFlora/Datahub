@@ -1,6 +1,6 @@
 {
     "description":"List bibliographies by full citation.",
     "key":"A full citation",
-    "refer":"view/full_citation",
+    "refer":"view/citation",
     "schema": "biblio/biblioSchema"
 }
