@@ -2,8 +2,7 @@ exports.assessmentSchema = {
 	"type":"object",
 	"properties":{
         "metadata": {
-            "type":"object",
-            "required":true
+            "type":"object"
         },
         "taxon": {
             "type": "object",
@@ -17,149 +16,119 @@ exports.assessmentSchema = {
         },
 		"assessor": {
 			"type":"string",
-			"description": "The name of the Assessor",
-			"id": "assessor",
-			"required":false
+            "label": "Assessor",
+			"description": "The name of the Assessor of this Assesssment"
 		},
 		"evaluator": {
 			"type":"string",
-			"description": "the revisor of this assessment",
-			"id": "evaluator",
-			"required":false
+			"description": "The revisor of this Assessment",
+            "label":"Evaluator"
 		},
 		"category": {
 			"type":"string",
-			"title": "Assessment",
-			"name": "Assessment",
-			"description": "The category of theaten.",
-			"id": "assessment",
-			"required":true
+			"label": "Assessment",
+			"description": "The category of theaten."
 		},
 		"criteria": {
 			"type":"string",
 			"description": "Criteria used to assess this specie.",
-			"id": "criteria",
-			"required":true
+            "label":"Criteria"
 		},
 		"rationale": {
 			"type":"string",
-			"required":true
+            "label": "Rationale",
+            "description": "The justification for this assessment",
+            "format":"multiline"
 		},
 		"currentPopulationTrend": {
 			"type":"string",
-			"id": "currentPopulationTrend",
-			"required":false
+            "label":"Current population Trend",
+            "description":""
 		},
 		"dateLastSeen": {
 			"type":"number",
-			"id": "dateLastSeen",
-			"required":false
+            "label":"Date last seen",
+            "description":""
 		},
 		"dateOfAssessment": {
 			"type":"number",
-			"description": "timestamp of the assessment",
-			"id": "dateOfAssessment",
-			"required":true
+            "label":"Date of assessment",
+			"description": "timestamp of the assessment"
 		},
 		"generationLength": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"genuineChangeRecent": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"genuineChangeSinceFirstTime": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"noChangeSameCategoryAndCriteria": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"noChangeSameCategoryAndDifferentCriteria": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeCriteriaRevisor": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeIncorrectDataUsedPreviously": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeKnowledgeOfCrite": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeNewInformation": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeOther": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"nonGenuineChangeTaxonomy": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"notes": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"numberOfLocations": {
-			"type":"integer",
-			"required":false
+			"type":"integer"
 		},
 		"numberOfMatureIndividuals": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"populationDeclineFuture": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"populationDeclinePast": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"possiblyExtinctCandidate": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"possiblyExtinct": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"reasonsForChange": {
-			"type":"string",
-			"id": "ReasonsForChange",
-			"required":false
+			"type":"string"
 		},
 		"severelyFragmented": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"snapshot": {
-			"type":"string",
-			"description": "The snapshot of the specie data used",
-			"id": "snapshot",
-			"required":true
+			"type":"string"
 		},
 		"status": {
 			"type":"string",
-			"description": "status of work",
-			"required":true
+			"description": "Status of work"
+            "label": "status",
+            "enum":["Open","Review","Comments","Done"]
 		},
 		"timePeriodOfFutureDecline": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		},
 		"timePeriodOfPastDecline": {
-			"type":"string",
-			"required":false
+			"type":"string"
 		}
 	}
 };
