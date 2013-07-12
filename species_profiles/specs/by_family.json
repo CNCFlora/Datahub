@@ -1,0 +1,6 @@
+{
+    "description":"Allows the lookup species profiles of given family.",
+    "key":"A Family",
+    "refer":"view/by_family",
+    "schema": "profile/profileSchema"
+}
