@@ -10,7 +10,10 @@ function(doc) {
             throw({forbidden: "Must follow schema: "
                     +JSON.stringify(tv4.error, null, 4)});
         }
-        var lsid = "urn:lsid:cncflora.jbrj.gov.br:taxon:"+doc.family+":"+doc.genus+":"+doc.specificEpithet;
+        var lsid = "urn:lsid:cncflora.jbrj.gov.br:taxon:"+doc.family;
+        if(doc.taxonRank == "species") {
+            lsid = lsid+":"+doc.genus+":"+doc.specificEpithet;
+        }
         if(typeof doc.infraspecificEphitet == 'string') {
             lsid = lsid +":"+ doc.infraspecificEpithet;
         }
