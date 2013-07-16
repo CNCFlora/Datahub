@@ -15,17 +15,20 @@ function(){
             acceptedNameUsageID: "lg"
         });
     validate({
-            metadata: {type:"taxon"},
-            _id: "urn:lsid:cncflora.jbrj.gov.br:taxon:acanthaceae:longiflorae:brasiliensis",
+            metadata: {type:"taxon", identifier:  "urn:lsid:cncflora.jbrj.gov.br:taxon:acanthaceae:longiflora:brasiliensis"},
+            _id: "urn:lsid:cncflora.jbrj.gov.br:taxon:acanthaceae:longiflora:brasiliensis",
             kingdom: "X",
             phylum: "Z",
             "class": "W",
             order:"Y",
             family: "Acanthaceae",
-            genus: "longiflorae",
+            genus: "longiflora",
+            specificEpithet: 'brasiliensis',
             scientificName: "Longiflora brasiliensis S.Profice",
             scientificNameAuthorship: "S.Profice",
             acceptedNameUsage: "Longiflora brasiliensis S.Profice",
-            acceptedNameUsageID: "lg"
+            acceptedNameUsageID: "lg",
+            taxonomicStatus: 'accepted',
+            taxonRank: 'species'
         });
 }
