@@ -216,7 +216,7 @@ exports.profileSchema = {
                 "lifeForm": {
                     "label":"Life form",
                     "type":"string",
-                    "enum":["herbacia","arbustiva","arborea","liana","parasita","hemiparasita"]
+                    "enum":["herbacea","arbustiva","arborea","liana","parasita","hemiparasita"]
                 },
                 "longevity": {
                     "label":"Longivity",
@@ -417,6 +417,16 @@ exports.profileSchema = {
                     "use": {
                         "type":"string",
                         "label":"Use"
+                    },
+                    "resource": {
+                        "type":"string",
+                        "label":"Resource used",
+                        "enum":["leaf","flower","fruit","stalk","root","seed","sap","whole plant"]
+                    },
+                    "provenance": {
+                        "type":"string",
+                        "label":"Provenance",
+                        "enum": ["natural","cultivated"]
                     },
                     "references": {
                         "type": "array",
