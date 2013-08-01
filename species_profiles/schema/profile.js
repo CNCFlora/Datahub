@@ -428,6 +428,11 @@ exports.profileSchema = {
                         "label":"Provenance",
                         "enum": ["natural","cultivated"]
                     },
+                    "details": {
+                        "label":"Details",
+                        "type": "string",
+                        "format":"multiline"
+                    },
                     "references": {
                         "type": "array",
                         "label": "References",
