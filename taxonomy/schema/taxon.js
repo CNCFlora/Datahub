@@ -1,6 +1,7 @@
 exports.taxonSchema = {
     type: "object",
     properties: {
+        "taxonID": {"type":"string"},
         "kingdom": {type:"string"},
         "phylum": {type:"string"},
         "class": {type:"string"},
@@ -19,5 +20,5 @@ exports.taxonSchema = {
         "ipni":{type:"string"},
         "fbid":{type:"string"}
     },
-    required: ["kingdom","phylum","class","order","family","genus","scientificName","taxonomicStatus"]
+    required: ["taxonID","kingdom","phylum","class","order","family","genus","scientificName","taxonomicStatus"]
 };
