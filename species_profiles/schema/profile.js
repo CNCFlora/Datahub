@@ -49,8 +49,9 @@ exports.profileSchema = {
             "label":"Economics",
             "properties": {
                 "potentialEconomicValue": {
-                    "type":"boolean",
-                    "label": "Specie have potential economic value"
+                    "label": "Specie have potential economic value",
+                    "type" : "string",
+                    "enum" : [null,"yes","no","unkown"]
                 },
                 "details":{
                     "label":"Details",
@@ -84,7 +85,7 @@ exports.profileSchema = {
                     "type": "object",
                     "label":"Estimated size",
                     "properties": {
-                        "type": {"type":"string", "enum":["absolute","range","less then","greater then","circa"]},
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
                         "maximum": {"type":"number"},
                         "absolute": {"type":"number"}
@@ -94,7 +95,7 @@ exports.profileSchema = {
                     "type": "object",
                     "label":"Number of subpopulations",
                     "properties": {
-                        "type": {"type":"string", "enum":["absolute","range","less then","greater then","circa"]},
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
                         "maximum": {"type":"number"},
                         "absolute": {"type":"number"}
@@ -104,7 +105,7 @@ exports.profileSchema = {
                     "type": "object",
                     "label":"Number of individuals in biggest subpopulation",
                     "properties": {
-                        "type": {"type":"string", "enum":["absolute","range","less then","greater then","circa"]},
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
                         "maximum": {"type":"number"},
                         "absolute": {"type":"number"}
@@ -114,7 +115,7 @@ exports.profileSchema = {
                     "type": "object",
                     "label":"Populational reduction",
                     "properties": {
-                        "type": {"type":"string", "enum":["absolute","range","less then","greater then","circa"]},
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
                         "maximum": {"type":"number"},
                         "absolute": {"type":"number"}
@@ -127,7 +128,7 @@ exports.profileSchema = {
                         "extremeFluctuation": {
                             "type":"string",
                             "label":"Specie have extreme fluctuation",
-                            "enum":["unkown","no","yes"]
+                            "enum":[null,"unkown","no","yes"]
                         }
                     }
                 },
@@ -135,7 +136,7 @@ exports.profileSchema = {
                     "type": "object",
                     "label":"Generation timing (in months)",
                     "properties": {
-                        "type": {"type":"string", "enum":["absolute","range","less then","greater then","circa"]},
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
                         "maximum": {"type":"number"},
                         "absolute": {"type":"number"},
@@ -177,7 +178,7 @@ exports.profileSchema = {
                 "fragmented": {
                     "label":"Fragmented distribution",
                     "type": "string",
-                    "enum": ["unkown","yes","no"]
+                    "enum":[null,"unkown","yes","no"]
                 },
                 "eoo": {
                     "label":"Extent of occurrence (in km²)",
@@ -191,21 +192,38 @@ exports.profileSchema = {
                     "type":"object",
                     "label":"Altitude",
                     "properties": {
+                        "type": {"type":"string", "enum":[null,"absolute","range","less then","greater then","circa"]},
                         "minimum": {"type":"number"},
-                        "maximum": {"type":"number"}
+                        "maximum": {"type":"number"},
+                        "absolute": {"type":"number"}
                     }
                 },
-                "endemism":{ 
-                    "label":"Endemism",
-                    "type":"array",
-                    "items": {
-                        "type": "string" 
-                    }
+                "brasilianEndemic": {
+                    "type":"string",
+                    "label":"Endemic",
+                    "enum":[null,"yes","no","unkown"]
                 },
                 "resume": { 
                     "label": "Distribution resume",
                     "format": "multiline",
                     "type": "string" 
+                },
+                "references": {
+                    "type": "array",
+                    "label": "References",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "citation": {
+                                "type":"string",
+                                "label": "Citation"
+                            },
+                            "ref":  {
+                                "type": "string",
+                                "label": "Ref"
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -216,27 +234,27 @@ exports.profileSchema = {
                 "lifeForm": {
                     "label":"Life form",
                     "type":"string",
-                    "enum":["herbacea","arbustiva","arborea","liana","parasita","hemiparasita"]
+                    "enum":[null,"herbacea","arbustiva","arborea","liana","parasita","hemiparasita"]
                 },
                 "longevity": {
                     "label":"Longivity",
                     "type":"string",
-                    "enum":["unkown","anual","bianual","perennial"]
+                    "enum":[null,"unkown","anual","bianual","perennial"]
                 },
                 "fenology": {
                     "label":"Fenology",
                     "type":"string",
-                    "enum":["deciduifolia","semideciduifolia","perenifolia"]
+                    "enum":[null,"deciduifolia","semideciduifolia","perenifolia"]
                 },
                 "clonal": {
                     "label":"Clonal",
                     "type":"string",
-                    "enum":["unkown","yes","no"]
+                    "enum":[null,"unkown","yes","no"]
                 },
                 "resprout": {
                     "label":"Resprout",
                     "type":"string",
-                    "enum":["unkown","yes","no"]
+                    "enum":[null,"unkown","yes","no"]
                 },
                 "habitats": {
                     "label":"Major Habitats",
@@ -281,6 +299,71 @@ exports.profileSchema = {
             "label":"Reproduction",
             "type": "object",
             "properties": {
+                "sexualSystem": {
+                    "type":"string",
+                    "label":"Sexual System",
+                    "enum":[null,"self-compatible","self-incompatible","angopermia","unkown"]
+                },
+                "system": {
+                    "type":"string",
+                    "label":"Reproduction System",
+                    "enum":[null,"hermafrodita","monoecious","dioecious","andromonoecious","ginomonóicious","trimonoicious","androidioecious","ginodiecious","trioecious"]
+                },
+                "strategy": {
+                    "type":"string",
+                    "label": "Reproduction Strategy",
+                    "enum":[null,"semelpara","iteropara","unknown"]
+                },
+                "fenology": {
+                    "type":"array",
+                    "label":"Fenology",
+                    "items":{
+                        "type":"object",
+                        "properties": {
+                            "fenology": {
+                                "type":"string",
+                                "label": "Fenology",
+                                "enum":[null,"flowering","fruiting","unknown"]
+                            },
+                            "start": {
+                                "type":"string",
+                                "label":"Start",
+                                "enum":[null,"Jan","Fev","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+                            },
+                            "end": {
+                                "type":"string",
+                                "label":"End",
+                                "enum":[null,"Jan","Fev","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+                            }
+                        }
+                    }
+                },
+                "pollinationSyndrome": {
+                    "type":"array",
+                    "label":"Pollination Syndrome",
+                    "items":{
+                        "type":"string",
+                        "enum":[null,"anemophily","hidrophily","entomophily","ornitophily","quiropterophily","falenophily","psicophily","melitophily","miophily","cantarophily","malacophily","mamaliophily"]
+                    }
+                },
+                "pollinatorInformation": {
+                    "type":"string",
+                    "format":"multiline",
+                    "label":"Pollinator Information"
+                },
+                "dispersionSyndrome": {
+                    "type":"array",
+                    "label":"Disperson Syndrome",
+                    "items":{
+                        "type":"string",
+                        "enum":[null,"anemochory","hidrochory","barochory","zoochory","ornitochory","mamaliochory","mimecochory","quirepterochory","saurochory","ictiochory","endozoochory","sinzoochory"]
+                    }
+                },
+                "dispersorInformation":{
+                    "type":"string",
+                    "format": "multiline",
+                    "label":"Dispersor Information"
+                },
                 "resume": {
                     "label":"Reproduction resume",
                     "type":"string",
@@ -318,12 +401,12 @@ exports.profileSchema = {
                     "incidence":{
                         "label":"Incidence",
                         "type":"string",
-                        "enum": ["local","regional","national"]
+                        "enum":[null,"local","regional","national"]
                     },
                     "severity": {
                         "label":"Severity",
                         "type":"string",
-                        "enum": ["very low","low","medium","high","very high"]
+                        "enum":[null,"very low","low","medium","high","very high"]
                     },
                     "reversible": {
                         "label":"Reversible",
@@ -336,12 +419,12 @@ exports.profileSchema = {
                     "timing": {
                         "label": "Timing",
                         "type": "array",
-                        "items":{"type":"string","enum":["past","present","future"]}
+                        "items":{"type":"string","enum":[null,"past","present","future"]}
                     },
                     "decline": {
                         "label": "Decline",
                         "type": "array",
-                        "items":{"type":"string","enum":["locality","habitat","occupancy","occurrence","mature individuals"]}
+                        "items":{"type":"string","enum":[null,"locality","habitat","occupancy","occurrence","mature individuals"]}
                     },
                     "details": {
                         "label":"Details",
@@ -381,7 +464,7 @@ exports.profileSchema = {
                     "situation": {
                         "label":"Situation",
                         "type":"string",
-                        "enum":["on going","needed"]
+                        "enum":[null,"on going","needed"]
                     },
                     "details": {
                         "label":"Details",
@@ -421,12 +504,12 @@ exports.profileSchema = {
                     "resource": {
                         "type":"string",
                         "label":"Resource used",
-                        "enum":["leaf","flower","fruit","stalk","root","seed","sap","whole plant"]
+                        "enum":[null,"leaf","flower","fruit","stalk","root","seed","sap","whole plant"]
                     },
                     "provenance": {
                         "type":"string",
                         "label":"Provenance",
-                        "enum": ["natural","cultivated"]
+                        "enum":[null,"natural","cultivated"]
                     },
                     "details": {
                         "label":"Details",
