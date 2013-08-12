@@ -53,82 +53,100 @@ exports.assessmentSchema = {
 		"dateOfAssessment": {
 			"type":"number",
             "label":"Date of assessment",
-			"description": "timestamp of the assessment"
+			"description": "Timestamp of the assessment"
 		},
 		"generationLength": {
-			"type":"string"
+			"type":"string",
+            "label":"Generation Length",
+            "description":""
 		},
-		"genuineChangeRecent": {
-			"type":"string"
-		},
-		"genuineChangeSinceFirstTime": {
-			"type":"string"
-		},
-		"noChangeSameCategoryAndCriteria": {
-			"type":"string"
-		},
-		"noChangeSameCategoryAndDifferentCriteria": {
-			"type":"string"
-		},
-		"nonGenuineChangeCriteriaRevisor": {
-			"type":"string"
-		},
-		"nonGenuineChangeIncorrectDataUsedPreviously": {
-			"type":"string"
-		},
-		"nonGenuineChangeKnowledgeOfCrite": {
-			"type":"string"
-		},
-		"nonGenuineChangeNewInformation": {
-			"type":"string"
-		},
-		"nonGenuineChangeOther": {
-			"type":"string"
-		},
-		"nonGenuineChangeTaxonomy": {
-			"type":"string"
-		},
-		"notes": {
-			"type":"string"
-		},
+        "changes": {
+            "type":"object",
+            "label":"Changes",
+            "description":"Changes from last evaluation",
+            "properties": {
+                "reasonsForChange": {
+                    "type":"string",
+                    "label":"Reasons for change",
+                    "description":""
+                },
+                "genuineChangeRecent": {
+                    "type":"boolean",
+                    "label":"Genuine Change Recent"
+                },
+                "genuineChangeSinceFirstTime": {
+                    "type":"boolean"
+                },
+                "noChangeSameCategoryAndCriteria": {
+                    "type":"boolean"
+                },
+                "noChangeSameCategoryAndDifferentCriteria": {
+                    "type":"boolan"
+                },
+                "nonGenuineChangeCriteriaRevisor": {
+                    "type":"boolean"
+                },
+                "nonGenuineChangeIncorrectDataUsedPreviously": {
+                    "type":"boolean"
+                },
+                "nonGenuineChangeKnowledgeOfCrite": {
+                    "type":"boolean"
+                },
+                "nonGenuineChangeNewInformation": {
+                    "type":"boolean"
+                },
+                "nonGenuineChangeOther": {
+                    "type":"boolean"
+                },
+                "nonGenuineChangeTaxonomy": {
+                    "type":"boolean"
+                }
+            }
+        },
 		"numberOfLocations": {
-			"type":"integer"
+			"type":"integer",
+            "label":"Number of locations"
 		},
 		"numberOfMatureIndividuals": {
+			"type":"string",
+            "label":"Number of Mature Individuals"
+		},
+		"populationDeclinePast": {
+			"type":"number",
+            "label":"Population decline (past)"
+            "description":"% of population decline in the past"
+		},
+		"timePeriodOfPastDecline": {
 			"type":"string"
 		},
 		"populationDeclineFuture": {
-			"type":"string"
-		},
-		"populationDeclinePast": {
-			"type":"string"
-		},
-		"possiblyExtinctCandidate": {
-			"type":"string"
-		},
-		"possiblyExtinct": {
-			"type":"string"
-		},
-		"reasonsForChange": {
-			"type":"string"
-		},
-		"severelyFragmented": {
-			"type":"string"
-		},
-		"snapshot": {
-			"type":"string"
-		},
-		"status": {
-			"type":"string",
-			"description": "Status of work"
-            "label": "status",
-            "enum":["Open","Review","Comments","Done"]
+			"type":"number",
+            "label":"Population decline (future)"
+            "description":"% of population decline in the future"
 		},
 		"timePeriodOfFutureDecline": {
 			"type":"string"
 		},
-		"timePeriodOfPastDecline": {
-			"type":"string"
+		"possiblyExtinctCandidate": {
+			"type":"boolean",
+            "label":"Possibly extinct candidate",
+            "description":"if specie is candidate to possibly extinction"
+		},
+		"possiblyExtinct": {
+			"type":"boolean",
+            "label":"Possibly extinct",
+            "description":"if specie is possibly extinct"
+		},
+		"severelyFragmented": {
+			"type":"string",
+            "label":"Severely Fragmented",
+            "description":"If the specie distribution is fragmented",
+            "enum":[null,"yes","no","unkown"]
+		},
+		"notes": {
+			"type":"string",
+            "label":"Notes",
+            "description":"Extra notes on this assessment."
 		}
 	}
 };
