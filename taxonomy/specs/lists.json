@@ -1,0 +1,6 @@
+{
+    "description":"All lists",
+    "key":"A list ID",
+    "refer": "view/lists",
+    "schema":"taxon/listSchema"
+}

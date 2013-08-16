@@ -20,17 +20,6 @@ function(doc) {
         if(doc.family != doc.family.toUpperCase()) {
             throw({forbidden: "Family must be upper case"});
         }
-        var lsid = "urn:lsid:cncflora.jbrj.gov.br:taxon:"+doc.family;
-        if(doc.taxonRank == "species") {
-            lsid = lsid+":"+doc.genus+":"+doc.specificEpithet;
-        }
-        if(typeof doc.infraspecificEphitet == 'string') {
-            lsid = lsid +":"+ doc.infraspecificEpithet;
-        }
-        lsid = lsid.toLowerCase();
-        if(doc._id != lsid || doc.metadata.identifier != lsid) {
-            throw({forbidden: "Malformed identifier, should be: "+lsid});
-        }
         if(doc.taxonomicStatus != "accepted") {
             if(typeof doc.acceptedNameUsageID != "string") {
                 throw({forbidden: "Non accepted names must point to a valid acceptedNameUsageID"});

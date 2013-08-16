@@ -17,8 +17,7 @@ exports.taxonSchema = {
         "nomenclaturalStatus": {type:"string"},
         "acceptedNameUsage": {type:"string"},
         "acceptedNameUsageID": {type:"string"},
-        "ipni":{type:"string"},
         "fbid":{type:"string"}
     },
-    required: ["taxonID","kingdom","phylum","class","order","family","genus","scientificName","taxonomicStatus"]
+    required: ["taxonID","kingdom","phylum","class","order","family","genus","scientificName","scientificNameAuthorship","taxonomicStatus"]
 };
