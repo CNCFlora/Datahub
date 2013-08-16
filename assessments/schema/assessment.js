@@ -2,16 +2,19 @@ exports.assessmentSchema = {
 	"type":"object",
 	"properties":{
         "metadata": {
-            "type":"object"
+            "type":"object",
+            "label":"Metadata",
+            "description":""
         },
         "taxon": {
             "type": "object",
+            "label": "Taxon",
             "properties": {
-                "family":{"type":"string"},
-                "scientificName":{"type":"string"},
-                "lsid":{"type":"string"},
-                "fb":{"type":"string"},
-                "ipni":{"type":"string"}
+                "family":{"type":"string","label":"Family"},
+                "scientificName":{"type":"string","label":"Scientific Name"},
+                "lsid":{"type":"string","label":"LSID"},
+                "fb":{"type":"string","label":"Flora ID"},
+                "ipni":{"type":"string","label":"IPNI ID"}
             }
         },
 		"assessor": {
@@ -113,7 +116,7 @@ exports.assessmentSchema = {
 		},
 		"populationDeclinePast": {
 			"type":"number",
-            "label":"Population decline (past)"
+            "label":"Population decline (past)",
             "description":"% of population decline in the past"
 		},
 		"timePeriodOfPastDecline": {
@@ -121,7 +124,7 @@ exports.assessmentSchema = {
 		},
 		"populationDeclineFuture": {
 			"type":"number",
-            "label":"Population decline (future)"
+            "label":"Population decline (future)",
             "description":"% of population decline in the future"
 		},
 		"timePeriodOfFutureDecline": {
