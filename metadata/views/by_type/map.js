@@ -1,3 +1,3 @@
-(function(doc) {
-    emit(doc.metadata.type,doc);
-})
+function(doc) {
+    emit(doc.metadata.type,doc.metadata);
+}

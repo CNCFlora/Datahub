@@ -20,9 +20,9 @@ function(doc) {
         if(doc.family != doc.family.toUpperCase()) {
             throw({forbidden: "Family must be upper case"});
         }
-        if(doc.taxonomicStatus != "accepted") {
+        if(doc.taxonomicStatus == "synonym") {
             if(typeof doc.acceptedNameUsageID != "string") {
-                throw({forbidden: "Non accepted names must point to a valid acceptedNameUsageID"});
+                throw({forbidden: "Synonym names must point to a valid acceptedNameUsageID"});
             }
         }
     } else if(doc.metadata.type == "checklist") {

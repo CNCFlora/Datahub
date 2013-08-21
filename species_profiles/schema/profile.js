@@ -12,8 +12,6 @@ exports.profileSchema = {
                 "scientificName":{"type":"string"},
                 "scientificNameAuthorship":{"type":"string"},
                 "lsid":{"type":"string"},
-                "fb":{"type":"string"},
-                "ipni":{"type":"string"}
             }
         },
         "taxonomicNotes": {
@@ -232,9 +230,19 @@ exports.profileSchema = {
             "label":"Ecology",
             "properties": {
                 "lifeForm": {
-                    "label":"Life form",
+                    "label":"Life Form",
                     "type":"string",
-                    "enum":[null,"herbacea","arbustiva","arborea","liana","parasita","hemiparasita"]
+                    "enum":[null,"herb","bush","tree","liana"]
+                },
+                "substratum": {
+                    "label":"Substratum",
+                    "type":"string",
+                    "enum":[null,"terrestrial","aquatic","rupicolous","saxicolous","epiphytic","hemiepiphytes"]
+                },
+                "luminosity": {
+                    "label":"Luminosity",
+                    "type":"string",
+                    "enum":[null,"heliophytic","esciophytic","mesophytic"]
                 },
                 "longevity": {
                     "label":"Longivity",
