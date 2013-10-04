@@ -8,10 +8,10 @@ exports.listSchema = {
             "items": {
                 "type":"object",
                 "properties": {
-                    "family": {type:"string"},
-                    "taxonRank": {type:"string", enum:["family","genus","species","subspecies","variety"]},
-                    "scientificName": {type:"string"},
-                    "scientificNameAuthorship":{type:"string"},
+                    "family": {"type":"string"},
+                    "taxonRank": {"type":"string", enum:["family","genus","species","subspecies","variety"]},
+                    "scientificName": {"type":"string"},
+                    "scientificNameAuthorship":{"type":"string"},
                     "taxonID":{"type":"string"}
                 }
             }

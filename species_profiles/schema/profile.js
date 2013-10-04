@@ -11,7 +11,7 @@ exports.profileSchema = {
                 "family":{"type":"string"},
                 "scientificName":{"type":"string"},
                 "scientificNameAuthorship":{"type":"string"},
-                "lsid":{"type":"string"},
+                "lsid":{"type":"string"}
             }
         },
         "taxonomicNotes": {
