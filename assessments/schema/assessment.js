@@ -12,10 +12,14 @@ exports.assessmentSchema = {
             "properties": {
                 "family":{"type":"string","label":"Family"},
                 "scientificName":{"type":"string","label":"Scientific Name"},
-                "lsid":{"type":"string","label":"LSID"},
-                "fb":{"type":"string","label":"Flora ID"},
-                "ipni":{"type":"string","label":"IPNI ID"}
+                "scientificNameAuthorship":{"type":"string"},
+                "lsid":{"type":"string","label":"LSID"}
             }
+        },
+        "profile": {
+            "type":"string",
+            "label":"Specie Profile",
+            "description":""
         },
 		"assessor": {
 			"type":"string",
@@ -43,25 +47,10 @@ exports.assessmentSchema = {
             "description": "The justification for this assessment",
             "format":"multiline"
 		},
-		"currentPopulationTrend": {
-			"type":"string",
-            "label":"Current population Trend",
-            "description":""
-		},
-		"dateLastSeen": {
-			"type":"number",
-            "label":"Date last seen",
-            "description":""
-		},
 		"dateOfAssessment": {
 			"type":"number",
             "label":"Date of assessment",
 			"description": "Timestamp of the assessment"
-		},
-		"generationLength": {
-			"type":"string",
-            "label":"Generation Length",
-            "description":""
 		},
         "changes": {
             "type":"object",
@@ -106,46 +95,67 @@ exports.assessmentSchema = {
                 }
             }
         },
-		"numberOfLocations": {
-			"type":"integer",
-            "label":"Number of locations"
-		},
-		"numberOfMatureIndividuals": {
-			"type":"string",
-            "label":"Number of Mature Individuals"
-		},
-		"populationDeclinePast": {
-			"type":"number",
-            "label":"Population decline (past)",
-            "description":"% of population decline in the past"
-		},
-		"timePeriodOfPastDecline": {
-			"type":"string"
-		},
-		"populationDeclineFuture": {
-			"type":"number",
-            "label":"Population decline (future)",
-            "description":"% of population decline in the future"
-		},
-		"timePeriodOfFutureDecline": {
-			"type":"string"
-		},
-		"possiblyExtinctCandidate": {
-			"type":"boolean",
-            "label":"Possibly extinct candidate",
-            "description":"if specie is candidate to possibly extinction"
-		},
-		"possiblyExtinct": {
-			"type":"boolean",
-            "label":"Possibly extinct",
-            "description":"if specie is possibly extinct"
-		},
-		"severelyFragmented": {
-			"type":"string",
-            "label":"Severely Fragmented",
-            "description":"If the specie distribution is fragmented",
-            "enum":[null,"yes","no","unkown"]
-		},
+        "information": {
+            "type":"object",
+            "label":"More information",
+            "properties":{
+                "currentPopulationTrend": {
+                    "type":"string",
+                    "label":"Current population Trend",
+                    "description":""
+                },
+                "dateLastSeen": {
+                    "type":"number",
+                    "label":"Date last seen",
+                    "description":""
+                },
+                "generationLength": {
+                    "type":"string",
+                    "label":"Generation Length",
+                    "description":""
+                },
+                "numberOfLocations": {
+                    "type":"integer",
+                    "label":"Number of locations"
+                },
+                "numberOfMatureIndividuals": {
+                    "type":"string",
+                    "label":"Number of Mature Individuals"
+                },
+                "populationDeclinePast": {
+                    "type":"number",
+                    "label":"Population decline (past)",
+                    "description":"% of population decline in the past"
+                },
+                "timePeriodOfPastDecline": {
+                    "type":"string"
+                },
+                "populationDeclineFuture": {
+                    "type":"number",
+                    "label":"Population decline (future)",
+                    "description":"% of population decline in the future"
+                },
+                "timePeriodOfFutureDecline": {
+                    "type":"string"
+                },
+                "possiblyExtinctCandidate": {
+                    "type":"boolean",
+                    "label":"Possibly extinct candidate",
+                    "description":"if specie is candidate to possibly extinction"
+                },
+                "possiblyExtinct": {
+                    "type":"boolean",
+                    "label":"Possibly extinct",
+                    "description":"if specie is possibly extinct"
+                },
+                "severelyFragmented": {
+                    "type":"string",
+                    "label":"Severely Fragmented",
+                    "description":"If the specie distribution is fragmented",
+                    "enum":[null,"yes","no","unkown"]
+                }
+            }
+        },
 		"notes": {
 			"type":"string",
             "label":"Notes",

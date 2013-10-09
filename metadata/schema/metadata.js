@@ -14,7 +14,7 @@ exports.metadataSchema = {
         "subject": {"type":"string"},
         "title": {"type":"string"},
         "valid": {"type":"boolean"},
-        "status": {"type":"string",enum:["open","validation","review","done"]}
+        "status": {"type":"string"}
     },
     "required": ["contributor","created","identifier","type","valid"]
 };
