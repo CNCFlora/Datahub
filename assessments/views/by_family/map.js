@@ -1,5 +1,5 @@
 function(doc) {
-    if(doc.metadata.type == 'assessment' && doc.status == 'published') {
+    if(doc.metadata.type == 'assessment') {
         emit(doc.taxon.family,doc);
     }
 }

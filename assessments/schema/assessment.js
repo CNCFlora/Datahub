@@ -60,6 +60,7 @@ exports.assessmentSchema = {
                 "reasonsForChange": {
                     "type":"string",
                     "label":"Reasons for change",
+                    "format":"multiline",
                     "description":""
                 },
                 "genuineChangeRecent": {
@@ -73,7 +74,7 @@ exports.assessmentSchema = {
                     "type":"boolean"
                 },
                 "noChangeSameCategoryAndDifferentCriteria": {
-                    "type":"boolan"
+                    "type":"boolean"
                 },
                 "nonGenuineChangeCriteriaRevisor": {
                     "type":"boolean"
@@ -159,6 +160,7 @@ exports.assessmentSchema = {
 		"notes": {
 			"type":"string",
             "label":"Notes",
+            "format":"multiline",
             "description":"Extra notes on this assessment."
 		}
 	}
