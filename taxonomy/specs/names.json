@@ -1,7 +1,7 @@
 {
     "description":"Species data by scientificName",
     "key":"A scientific name ",
-    "refer": "view/namess",
-    "schema":"taxon/taxontSchema"
+    "refer": "view/names",
+    "schema":"taxon/taxonSchema"
 }
 
