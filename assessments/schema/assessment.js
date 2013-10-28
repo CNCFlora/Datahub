@@ -21,6 +21,47 @@ exports.assessmentSchema = {
             "label":"Specie Profile",
             "description":""
         },
+        "review":{
+            "type":"object",
+            "label":"Review",
+            "properties": {
+                "status": {
+                    "type":"string",
+                    "label":"Status",
+                    "enum":[null,"","consistent","inconsistent","rationale"]
+                },
+                "comment": {
+                    "type":"string",
+                    "label":"Comment",
+                    "format":"multiline"
+                },
+                "rationale": {
+                    "type":"string",
+                    "label":"Rationale",
+                    "format":"multiline"
+                }
+            }
+        },
+        "comments": {
+            "type":"array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "creator": {
+                        "type":"string"
+                    },
+                    "contact": {
+                        "type":"string"
+                    },
+                    "created": {
+                        "type":"number"
+                    },
+                    "comment": {
+                        "type":"string"
+                    }
+                }
+            }
+        },
 		"assessor": {
 			"type":"string",
             "label": "Assessor",
