@@ -76,7 +76,7 @@ exports.assessmentSchema = {
 			"type":"string",
 			"label": "Category",
 			"description": "The category of theaten.",
-            "enum":[null,"LC","NT","VU","EN","CR","EW","EX"]
+            "enum":[null,"","LC","NT","VU","EN","CR","EW","EX"]
 		},
 		"criteria": {
 			"type":"string",
