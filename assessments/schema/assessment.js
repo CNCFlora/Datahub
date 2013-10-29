@@ -109,31 +109,40 @@ exports.assessmentSchema = {
                     "label":"Genuine Change Recent"
                 },
                 "genuineChangeSinceFirstTime": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Genuine Change Since First Time"
                 },
                 "noChangeSameCategoryAndCriteria": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"No Change Same Category And Criteria"
                 },
                 "noChangeSameCategoryAndDifferentCriteria": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"No Change Same Category And Different Criteria"
                 },
                 "nonGenuineChangeCriteriaRevisor": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change Criteria Revisor"
                 },
                 "nonGenuineChangeIncorrectDataUsedPreviously": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change Incorrect Data Used Previously"
                 },
                 "nonGenuineChangeKnowledgeOfCrite": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change Knowledge Of Criteria"
                 },
                 "nonGenuineChangeNewInformation": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change New Information"
                 },
                 "nonGenuineChangeOther": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change Other"
                 },
                 "nonGenuineChangeTaxonomy": {
-                    "type":"boolean"
+                    "type":"boolean",
+                    "label":"Non Genuine Change Taxonomy"
                 }
             }
         },
