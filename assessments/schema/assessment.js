@@ -76,7 +76,7 @@ exports.assessmentSchema = {
 			"type":"string",
 			"label": "Category",
 			"description": "The category of theaten.",
-            "enum":[null,"","LC","NT","VU","EN","CR","EW","EX"]
+            "enum":[null,"","LC","NT","VU","EN","CR","EW","EX","DD"]
 		},
 		"criteria": {
 			"type":"string",
@@ -93,60 +93,7 @@ exports.assessmentSchema = {
 			"type":"number",
             "label":"Date of assessment",
 			"description": "Timestamp of the assessment"
-		},
-        "changes": {
-            "type":"object",
-            "label":"Changes",
-            "description":"Changes from last evaluation",
-            "properties": {
-                "reasonsForChange": {
-                    "type":"string",
-                    "label":"Reasons for change",
-                    "format":"multiline",
-                    "description":""
-                },
-                "genuineChangeRecent": {
-                    "type":"boolean",
-                    "label":"Genuine Change Recent"
-                },
-                "genuineChangeSinceFirstTime": {
-                    "type":"boolean",
-                    "label":"Genuine Change Since First Time"
-                },
-                "noChangeSameCategoryAndCriteria": {
-                    "type":"boolean",
-                    "label":"No Change Same Category And Criteria"
-                },
-                "noChangeSameCategoryAndDifferentCriteria": {
-                    "type":"boolean",
-                    "label":"No Change Same Category And Different Criteria"
-                },
-                "nonGenuineChangeCriteriaRevisor": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change Criteria Revisor"
-                },
-                "nonGenuineChangeIncorrectDataUsedPreviously": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change Incorrect Data Used Previously"
-                },
-                "nonGenuineChangeKnowledgeOfCrite": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change Knowledge Of Criteria"
-                },
-                "nonGenuineChangeNewInformation": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change New Information"
-                },
-                "nonGenuineChangeOther": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change Other"
-                },
-                "nonGenuineChangeTaxonomy": {
-                    "type":"boolean",
-                    "label":"Non Genuine Change Taxonomy"
-                }
-            }
-        },
+		},        
         "information": {
             "type":"object",
             "label":"More information",
