@@ -232,7 +232,7 @@ exports.profileSchema = {
                 "lifeForm": {
                     "label":"Life Form",
                     "type":"string",
-                    "enum":[null,"herb","bush","tree","liana"]
+                    "enum":[null,"herb","bush","tree","liana","subshrub","small tree"]
                 },
                 "substratum": {
                     "label":"Substratum",
