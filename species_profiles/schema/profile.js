@@ -232,37 +232,37 @@ exports.profileSchema = {
                 "lifeForm": {
                     "label":"Life Form",
                     "type":"string",
-                    "enum":[null,"herb","bush","tree","liana","subshrub","small tree"]
+                    "enum":[null,"","herb","bush","tree","liana","subshrub","small tree"]
                 },
                 "substratum": {
                     "label":"Substratum",
                     "type":"string",
-                    "enum":[null,"terrestrial","aquatic","rupicolous","saxicolous","epiphytic","hemiepiphytes"]
+                    "enum":[null,"","terrestrial","aquatic","rupicolous","saxicolous","epiphytic","hemiepiphytes"]
                 },
                 "luminosity": {
                     "label":"Luminosity",
                     "type":"string",
-                    "enum":[null,"heliophytic","esciophytic","mesophytic"]
+                    "enum":[null,"","heliophytic","esciophytic","mesophytic"]
                 },
                 "longevity": {
                     "label":"Longivity",
                     "type":"string",
-                    "enum":[null,"unkown","anual","bianual","perennial"]
+                    "enum":[null,"","unkown","anual","bianual","perennial"]
                 },
                 "fenology": {
                     "label":"Fenology",
                     "type":"string",
-                    "enum":[null,"deciduifolia","semideciduifolia","perenifolia"]
+                    "enum":[null,"","deciduifolia","semideciduifolia","perenifolia"]
                 },
                 "clonal": {
                     "label":"Clonal",
                     "type":"string",
-                    "enum":[null,"unkown","yes","no"]
+                    "enum":[null,"","unkown","yes","no"]
                 },
                 "resprout": {
                     "label":"Resprout",
                     "type":"string",
-                    "enum":[null,"unkown","yes","no"]
+                    "enum":[null,"","unkown","yes","no"]
                 },
                 "habitats": {
                     "label":"Major Habitats",
@@ -310,28 +310,28 @@ exports.profileSchema = {
                 "sexualSystem": {
                     "type":"string",
                     "label":"Sexual System",
-                    "enum":[null,"self-compatible","self-incompatible","angopermia","unkown"]
+                    "enum":[null,"","self-compatible","self-incompatible","angopermia","unkown"]
                 },
                 "system": {
                     "type":"string",
                     "label":"Reproduction System",
-                    "enum":[null,"hermafrodita","monoecious","dioecious","andromonoecious","ginomonóicious","trimonoicious","androidioecious","ginodiecious","trioecious"]
+                    "enum":[null,"","hermafrodita","monoecious","dioecious","andromonoecious","ginomonóicious","trimonoicious","androidioecious","ginodiecious","trioecious"]
                 },
                 "strategy": {
                     "type":"string",
                     "label": "Reproduction Strategy",
-                    "enum":[null,"semelpara","iteropara","unknown"]
+                    "enum":[null,"","semelpara","iteropara","unknown"]
                 },
                 "fenology": {
                     "type":"array",
                     "label":"Fenology",
-                    "items":{
+                    "items": {
                         "type":"object",
                         "properties": {
                             "fenology": {
                                 "type":"string",
                                 "label": "Fenology",
-                                "enum":[null,"flowering","fruiting","unknown"]
+                                "enum":[null,"","flowering","fruiting","unknown"]
                             },
                             "start": {
                                 "type":"string",
