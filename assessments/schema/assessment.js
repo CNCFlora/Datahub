@@ -104,7 +104,7 @@ exports.assessmentSchema = {
                     "description":""
                 },
                 "dateLastSeen": {
-                    "type":"number",
+                    "type":"string",
                     "label":"Date last seen",
                     "description":""
                 },
@@ -127,7 +127,8 @@ exports.assessmentSchema = {
                     "description":"% of population decline in the past"
                 },
                 "timePeriodOfPastDecline": {
-                    "type":"string"
+                    "type":"string",
+                    "label":"Time period of past decline"
                 },
                 "populationDeclineFuture": {
                     "type":"number",
@@ -135,7 +136,8 @@ exports.assessmentSchema = {
                     "description":"% of population decline in the future"
                 },
                 "timePeriodOfFutureDecline": {
-                    "type":"string"
+                    "type":"string",
+                    "label":"Time period of future decline"
                 },
                 "possiblyExtinctCandidate": {
                     "type":"boolean",
