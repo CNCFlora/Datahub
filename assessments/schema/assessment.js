@@ -139,11 +139,6 @@ exports.assessmentSchema = {
                     "type":"string",
                     "label":"Time period of future decline"
                 },
-                "possiblyExtinctCandidate": {
-                    "type":"boolean",
-                    "label":"Possibly extinct candidate",
-                    "description":"if specie is candidate to possibly extinction"
-                },
                 "possiblyExtinct": {
                     "type":"boolean",
                     "label":"Possibly extinct",
