@@ -157,7 +157,24 @@ exports.assessmentSchema = {
             "label":"Notes",
             "format":"multiline",
             "description":"Extra notes on this assessment."
-		}
+		},
+        "references": {
+            "type": "array",
+            "label": "References",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "citation": {
+                        "type":"string",
+                        "label": "Citation"
+                    },
+                    "ref":  {
+                        "type": "string",
+                        "label": "Ref"
+                    }
+                }
+            }
+        }
 	}
 };
 
