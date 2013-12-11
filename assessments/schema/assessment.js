@@ -4,7 +4,23 @@ exports.assessmentSchema = {
         "metadata": {
             "type":"object",
             "label":"Metadata",
-            "description":""
+            "description":"Description of the resource",
+            "properties": {
+                "bibliographicCitation": {"type":"string"},
+                "contributor": {"type":"string"},
+                "created": {"type":"integer"},
+                "creator":{"type":"string"},
+                "description": {"type":"string"},
+                "identifier": {"type":"string"},
+                "type": {"type":"string"},
+                "modified": {"type":"integer"},
+                "language": {"type":"string"},
+                "source": {"type":"string"},
+                "subject": {"type":"string"},
+                "title": {"type":"string"},
+                "valid": {"type":"boolean"},
+                "status": {"type":"string"}
+            }
         },
         "taxon": {
             "type": "object",
@@ -19,11 +35,12 @@ exports.assessmentSchema = {
         "profile": {
             "type":"string",
             "label":"Specie Profile",
-            "description":""
+            "description":"ID of the specie profile that this assessment is based of"
         },
         "review":{
             "type":"object",
             "label":"Review",
+            "description": "Review details of the assessment",
             "properties": {
                 "status": {
                     "type":"string",
