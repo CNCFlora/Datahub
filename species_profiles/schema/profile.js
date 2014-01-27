@@ -349,7 +349,7 @@ exports.profileSchema = {
                 },
                 "pollinationSyndrome": {
                     "type":"array",
-                    "label":"Pollination Syndrome",
+                    "label":"Pollination System",
                     "items":{
                         "type":"string",
                         "enum":[null,"anemophily","hidrophily","entomophily","ornitophily","quiropterophily","falenophily","psicophily","melitophily","miophily","cantarophily","malacophily","mamaliophily"]
