@@ -316,7 +316,7 @@ exports.profileSchema = {
                 "system": {
                     "type":"string",
                     "label":"Reproduction System",
-                    "enum":[null,"","self-compatible","self-incompatible","angopermia","unkown"]                    
+                    "enum":[null,"","self-compatible","self-incompatible","angopermia","geitonogamia","unkown"]
                 },
                 "strategy": {
                     "type":"string",
