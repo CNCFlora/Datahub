@@ -365,7 +365,7 @@ exports.profileSchema = {
                     "label":"Disperson Syndrome",
                     "items":{
                         "type":"string",
-                        "enum":[null,"anemochory","hidrochory","barochory","zoochory","ornitochory","mamaliochory","mimecochory","quirepterochory","saurochory","ictiochory","endozoochory","sinzoochory"]
+                        "enum":[null,"anemochory","hidrochory","barochory","zoochory","ornitochory","mamaliochory","mimecochory","quirepterochory","saurochory","ictiochory","endozoochory","sinzoochory","epizocoria"]
                     }
                 },
                 "dispersorInformation":{
