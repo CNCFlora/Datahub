@@ -310,12 +310,13 @@ exports.profileSchema = {
                 "sexualSystem": {
                     "type":"string",
                     "label":"Sexual System",
-                    "enum":[null,"","self-compatible","self-incompatible","angopermia","unkown"]
+                    "enum":[null,"","hermafrodita","monoecious","dioecious","andromonoecious","ginomonóicious","trimonoicious","androidioecious","ginodiecious","trioecious"]
+                    
                 },
                 "system": {
                     "type":"string",
                     "label":"Reproduction System",
-                    "enum":[null,"","hermafrodita","monoecious","dioecious","andromonoecious","ginomonóicious","trimonoicious","androidioecious","ginodiecious","trioecious"]
+                    "enum":[null,"","self-compatible","self-incompatible","angopermia","unkown"]                    
                 },
                 "strategy": {
                     "type":"string",
