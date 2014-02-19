@@ -407,6 +407,10 @@ exports.profileSchema = {
                         "type":"string",
                         "label":"Threat"
                     },
+                    "stress": {
+                        "type":"string",
+                        "label":"Stress"
+                    },
                     "incidence":{
                         "label":"Incidence",
                         "type":"string",
