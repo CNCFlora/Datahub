@@ -10,7 +10,7 @@ exports.taxonSchema = {
         "genus": {type:"string"},
         "specificEpithet": {type:"string"},
         "infraspecificEpithet": {type:"string"},
-        "taxonRank": {type:"string", enum:["kingdom","phylum","class","order","family","genus","species","subspecies","variety"]},
+        "taxonRank": {type:"string", enum:["kingdom","phylum","class","order","family","subfamily","genus","species","subspecies","variety","division","tribe"]},
         "scientificName": {type:"string"},
         "scientificNameAuthorship":{type:"string"},
         "taxonomicStatus": {type:"string", enum: ["accepted","synonym","misapplied","proParteSynonym","homotypicSynonym","heterotypicSynonym"]},
