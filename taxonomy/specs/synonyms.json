@@ -1,6 +1,0 @@
-{
-    "description":"List synonyms by specie.",
-    "key":"A accepted specie LSID.",
-    "refer":"view/synonyms",
-    "schema": "taxon/taxonSchema"
-}

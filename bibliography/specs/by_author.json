@@ -1,6 +1,0 @@
-{
-    "description":"List bibliographies by author.",
-    "key":"Auhtor name",
-    "refer":"view/by_author",
-    "schema": "biblio/biblioSchema"
-}

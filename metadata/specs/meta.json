@@ -1,6 +1,0 @@
-{
-    "description":"Search for data of given value of given field on metadata.",
-    "key":"An array as: ['field_name','value'].",
-    "refer":"view/meta",
-    "schema": ""
-}

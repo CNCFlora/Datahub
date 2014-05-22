@@ -1,3 +1,0 @@
-PRO="http://localhost:5984/cncflora"
-DEV="http://localhost:5984/cncflora"
-TEST="http://localhost:5984/cncflora_test"

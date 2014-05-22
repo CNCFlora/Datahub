@@ -1,6 +1,0 @@
-{
-    "description":"Display photo by album.",
-    "key":"The path of a album.",
-    "refer":"view/by_album",
-    "schema": "image/imageSchema"
-}

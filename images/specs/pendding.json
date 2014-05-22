@@ -1,7 +1,0 @@
-{
-    "description":"Display photos pendding validation.",
-    "key":"N/A",
-    "refer":"view/pendding",
-    "schema": "image/imageSchema"
-}
-

@@ -1,12 +1,18 @@
-# CNCFlora APIs
+# Datahub
 
-This project contains the design documents for the APIs provided by and used on the CNCFlora systems.
+It is:
 
-It is based on [CouchDB](http://couchdb.apache.org), version 1.3+.
+- CouchDB
+- ElasticSearch
+- CouchDB-to-ElasticSearch river (all dbs)
+- CouchDB-to-CouchDB history (saves all doc revs in it own db (\_history))
+- Some documentation
 
-It includes the [tv4](https://github.com/geraintluff/tv4) lib to perform json-schema validations.
+Run on docker:
+
+    docker run -d -P -v /var/lib/couchdb:/var/lib/couchdb -t cncflora/datahub
 
 ## License
 
-Distribuited under the Apache License 2.0.
+Apache License 2.0
 

@@ -1,6 +1,12 @@
 #!/bin/bash
 
-nohup /opt/start_couch &
-./register.sh
+service elasticsearch start
+couchdb  &
 
-/usr/sbin/sshd -D
+#cd /root
+#python -m SimpleHTTPServer > /var/log/http.log 2>&1 &
+
+while true ; do
+    /root/bot.rb http://localhost:5984 http://localhost:9200
+done
+

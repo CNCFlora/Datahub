@@ -1,6 +1,0 @@
-{
-    "description":"Display photos by tag.",
-    "key":"A tag.",
-    "refer":"view/tags",
-    "schema": "image/imageSchema"
-}

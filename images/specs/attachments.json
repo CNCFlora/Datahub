@@ -1,6 +1,0 @@
-{
-    "description":"View by attachments",
-    "key":"A Image name",
-    "refer":"view/attachments",
-    "schema": "image/imageSchema"
-}

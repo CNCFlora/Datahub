@@ -1,6 +1,0 @@
-{
-    "description":"Allows the lookup of published assessments of given taxon scientific name.",
-    "key":"The ScientificName of a taxon,such as 'Apehlandra longiflora'.",
-    "refer":"view/by_taxon_name",
-    "schema": "assessment/assessmentSchema"
-}

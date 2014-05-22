@@ -1,25 +1,23 @@
-# CouchDB 
+FROM cncflora/ruby
 
-FROM klaemo/couchdb 
-MAINTAINER Diogo "kid" <diogo@diogok.net>
+RUN apt-get install openjdk-7-jdk couchdb wget -y
 
-ENV APP_USER couchdb 
-ENV APP_PASS couchdb
+RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.0.deb -O /root/elasticsearch-1.2.0.deb && \
+    dpkg -i /root/elasticsearch-1.2.0.deb
 
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bkp && sed -e 's/http/ftp/g' /etc/apt/sources.list.bkp > /etc/apt/sources.list
-RUN apt-get update -y
-RUN apt-get install curl git vim openssh-server tmux sudo aptitude screen wget htop -y
-
-RUN useradd -g users -G sudo -s /bin/bash -m $APP_USER
-RUN echo $APP_USER:$APP_PASS | chpasswd
-RUN mkdir /var/run/sshd 
-RUN chmod 755 /var/run/sshd
-
-EXPOSE 22
-EXPOSE 5984
-
+ADD bot.rb /root/bot.rb
 ADD start.sh /root/start.sh
+RUN chmod +x /root/bot.rb
 RUN chmod +x /root/start.sh
+
+RUN sed -i -e 's/;bind_address = 127.0.0.1/bind_address = 0.0.0.0/' /etc/couchdb/local.ini
+RUN mkdir /var/run/couchdb
+
+VOLUME ["/var/lib/couchdb"]
+
+EXPOSE 5984
+EXPOSE 9200
+EXPOSE 8080
 
 CMD ["/root/start.sh"]
 

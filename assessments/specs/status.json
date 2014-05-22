@@ -1,7 +1,0 @@
-{
-    "description":"Lists assessments by it's conservation statuses'",
-    "key":"A Category/criteria combination",
-    "refer":"view/statuses",
-    "schema": "assessment/assessmentSchema"
-}
-

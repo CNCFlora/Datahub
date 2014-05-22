@@ -1,6 +1,0 @@
-{
-    "description":"Allows the lookup species profiles of given family in given status.",
-    "key":"An array in the form: ['family','status']",
-    "refer":"view/by_family_and_status",
-    "schema": "profile/profileSchema"
-}
