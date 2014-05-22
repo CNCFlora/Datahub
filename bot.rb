@@ -11,33 +11,11 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-def put(uri,doc) 
-    uri = URI.parse(uri)
-    header = {'Content-Type'=> 'application/json'}
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Put.request_uri, header)
-    request.body = doc.to_json
-    http.request(request)
-end
-
-def post(uri,doc) 
-    uri = URI.parse(uri)
-    header = {'Content-Type'=> 'application/json'}
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Post.new(uri.request_uri, header)
-    request.body = doc.to_json
-    http.request(request)
-end
-
-def delete(uri)
-    uri = URI.parse(uri)
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Delete.new(uri.request_uri)
-    http.request(request)
-end
+require_relative 'utils'
 
 puts "Start"
 
+# read args
 couch = ARGV[0];
 es = ARGV[1];
 
@@ -55,6 +33,7 @@ end
 
 dbs.each { |db|
 
+    # rewrite vars
     id = "#{@id}.#{db}"
     couch = "#{couch}/#{db}"
     es = "#{es}/#{db}"
