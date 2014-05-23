@@ -69,9 +69,9 @@ dbs.each { |db|
     es = "#{es}/#{db}"
 
     # create index if not exists
-    put(es,{});
+    puts put(es,{});
     # create history db if not exists
-    put("#{couch}_history",{});
+    puts put("#{couch}_history",{});
 
     # create last_seq if not exists
     system("echo 0 > /tmp/#{id}.last_seq") unless File.exists?("/tmp/#{id}.last_seq") 
@@ -97,7 +97,7 @@ dbs.each { |db|
             doc.delete("_rev")
             doc.delete("_attachments")
             response = post("#{couch}_history",doc)
-            puts response.body
+            puts response
             
             # to elasticsearch
             doc = change["doc"].clone
@@ -106,12 +106,12 @@ dbs.each { |db|
             doc.delete("_rev")
             doc.delete("_attachments")
             response = post("#{es}/#{doc["metadata"]["type"]}/#{URI.encode(doc["id"])}",doc)
-            puts response.body
+            puts response
         elsif change["doc"].has_key?("_deleted")
             # delete from es
             doc = change["doc"].clone
-            r = delete("#{es}/_query?q=id:#{URI.encode(doc["_id"].gsub(":","\\:"))}")
-            puts r.body
+            response = delete("#{es}/_query?q=id:#{URI.encode(doc["_id"].gsub(":","\\:"))}")
+            puts response
         end
     }
 

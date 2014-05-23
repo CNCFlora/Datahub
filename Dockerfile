@@ -8,7 +8,7 @@ RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elastics
 RUN sed -i -e 's/;bind_address = 127.0.0.1/bind_address = 0.0.0.0/' /etc/couchdb/local.ini
 RUN mkdir /var/run/couchdb
 
-RUN a2enmod proxy && a2enmod proxy_http
+RUN apt-get install apache2 -y && a2enmod proxy && a2enmod proxy_http
 ADD public /var/www/public
 ADD default.conf /etc/apache2/sites-available/000-default.conf
 
