@@ -1,0 +1,70 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"database",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"/../db/{db}/_all_docs",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Get Lot's of documents",
+                    "nickname":"getBulk",
+                    "parameters":[
+                        {
+                            "name":"db",
+                            "description":"Database",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["cncflora"]
+                        },
+                        {
+                            "name":"keys",
+                            "description":"A JSON string of ids to get: [\"id1\",\"id2\"]",
+                            "paramType":"query",
+                            "required":true,
+                            "type":"string"
+                        },
+                        {
+                            "name":"include_docs",
+                            "description":"If should include docs itself (or just meta)",
+                            "type":"boolean",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path":"/../db/{db}/_bulk_docs",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Insert/update in bulk.",
+                    "nickname":"postBulk",
+                    "parameters":[
+                        {
+                            "name":"db",
+                            "description":"Database",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["cncflora"]
+                        },
+                        {
+                            "name":"body",
+                            "description":"JSON of array of documents: [\"docs\":[{\"foo\":\"bar\"}]]",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

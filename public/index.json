@@ -1,0 +1,28 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "info":{
+        "title":"Datahub",
+        "description":"Database and Search operations.",
+        "contact":"diogo@diogok.net"
+    },
+    "apis":[
+        {
+            "path":"/../database.json",
+            "description":"Database backend"
+        },
+        {
+            "path":"/../bulk.json",
+            "description":"Bulk batabase backend"
+        },
+        {
+            "path":"/../changes.json",
+            "description":"Follow changes on the database"
+        },
+        {
+            "path":"/../search.json",
+            "description":"Search backend"
+        }
+    ]
+}
+

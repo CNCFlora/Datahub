@@ -1,0 +1,43 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"database",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"/../db/{db}/_changes",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Get latest changes",
+                    "nickname":"getChanges",
+                    "parameters":[
+                        {
+                            "name":"db",
+                            "description":"Database",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["cncflora"]
+                        },
+                        {
+                            "name":"since",
+                            "description":"Your last seq number",
+                            "paramType":"query",
+                            "required":false,
+                            "type":"string"
+                        },
+                        {
+                            "name":"include_docs",
+                            "description":"If should include docs itself (or just meta)",
+                            "type":"boolean",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

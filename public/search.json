@@ -1,0 +1,45 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"search",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"/../es/{index}/{type}/_search",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Fulltext search.",
+                    "nickname":"search",
+                    "parameters":[
+                        {
+                            "name":"index",
+                            "description":"Name of index",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["cncflora"]
+                        },
+                        {
+                            "name":"type",
+                            "description":"Type of resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["assessment","occurrence"]
+                        },
+                        {
+                            "name":"q",
+                            "description":"Query string",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
