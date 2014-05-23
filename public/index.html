@@ -23,7 +23,14 @@
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
+        swaggerApi.basePath=swaggerApi.url.replace("index.json","").replace("/api","");
+        for(var i in swaggerApi.apis) {
+            if(typeof swaggerApi.apis[i] == 'object' && swaggerApi.apis[i] != null && typeof swaggerApi.apis[i].basePath == 'string')  {
+                swaggerApi.apis[i].basePath = swaggerApi.basePath;
+            }
+        }
         if(console) {
+          console.log(swaggerApi);
           console.log("Loaded SwaggerUI")
         }
         $('pre code').each(function(i, e) {hljs.highlightBlock(e)});

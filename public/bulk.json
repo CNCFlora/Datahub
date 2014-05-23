@@ -1,12 +1,12 @@
 {
     "apiVersion":"v1",
     "swaggerVersion":"1.2",
-    "resourcePath":"database",
+    "resourcePath":"bulk",
     "produces":["application/json"],
     "models":{},
     "apis": [
         {
-            "path":"/../db/{db}/_all_docs",
+            "path":"{db}/_all_docs",
             "operations":[
                 {
                     "method":"GET",
@@ -39,7 +39,7 @@
             ]
         },
         {
-            "path":"/../db/{db}/_bulk_docs",
+            "path":"{db}/_bulk_docs",
             "operations":[
                 {
                     "method":"POST",

@@ -6,7 +6,7 @@
     "models":{},
     "apis": [
         {
-            "path":"/../db/{db}",
+            "path":"{db}",
             "operations":[
                 {
                     "method":"GET",
@@ -48,7 +48,7 @@
             ]
         },
         {
-            "path":"/../db/{db}/{id}",
+            "path":"{db}/{id}",
             "operations":[
                 {
                     "method":"GET",
