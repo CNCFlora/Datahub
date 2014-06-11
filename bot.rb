@@ -65,13 +65,11 @@ dbs.each { |db|
 
     # rewrite vars
     id = "#{@id}.#{db}"
-    couch = "#{couch}/#{db}"
-    es = "#{es}/#{db}"
 
     # create index if not exists
-    puts put(es,{});
+    puts put("#{es}/#{db}",{});
     # create history db if not exists
-    puts put("#{couch}_history",{});
+    puts put("#{couch}/#{db}_history",{});
 
     # create last_seq if not exists
     system("echo 0 > /tmp/#{id}.last_seq") unless File.exists?("/tmp/#{id}.last_seq") 
@@ -82,7 +80,7 @@ dbs.each { |db|
     last_file.close
 
     # get latest changes
-    changes_uri = URI("#{couch}/_changes?since=#{last_seq}&limit=500&feed=normal&include_docs=true");
+    changes_uri = URI("#{couch}/#{db}/_changes?since=#{last_seq}&limit=500&feed=normal&include_docs=true");
     puts "URL: #{changes_uri}"
 
     changes = JSON.parse(Net::HTTP.get(changes_uri))['results']
@@ -96,21 +94,22 @@ dbs.each { |db|
             doc["_id"] = "#{doc["_id"]}:#{doc["_rev"]}"
             doc.delete("_rev")
             doc.delete("_attachments")
-            response = post("#{couch}_history",doc)
+            response = post("#{couch}/#{db}_history",doc)
             puts response
             
             # to elasticsearch
             doc = change["doc"].clone
             doc["id"] = doc["_id"]
+            doc["rev"] = doc["_rev"]
             doc.delete("_id")
             doc.delete("_rev")
             doc.delete("_attachments")
-            response = post("#{es}/#{doc["metadata"]["type"]}/#{URI.encode(doc["id"])}",doc)
+            response = post("#{es}/#{db}/#{doc["metadata"]["type"]}/#{URI.encode(doc["id"])}",doc)
             puts response
         elsif change["doc"].has_key?("_deleted")
             # delete from es
             doc = change["doc"].clone
-            response = delete("#{es}/_query?q=id:#{URI.encode(doc["_id"].gsub(":","\\:"))}")
+            response = delete("#{es}/#{db}/_query?q=id:#{URI.encode(doc["_id"].gsub(":","\\:"))}")
             puts response
         end
     }
