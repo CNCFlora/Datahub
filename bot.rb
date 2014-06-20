@@ -109,7 +109,8 @@ dbs.each { |db|
         elsif change["doc"].has_key?("_deleted")
             # delete from es
             doc = change["doc"].clone
-            response = delete("#{es}/#{db}/_query?q=id:#{URI.encode(doc["_id"].gsub(":","\\:"))}")
+            q = URI.encode("id:\"#{doc["_id"]}\"");
+            response = delete("#{es}/#{db}/_query?q=#{q}")
             puts response
         end
     }
