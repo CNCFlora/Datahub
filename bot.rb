@@ -43,82 +43,115 @@ def delete(uri)
     JSON.parse(response.body)
 end
 
-puts "Start"
-
-# read args
-couch = ARGV[0];
-es = ARGV[1];
-
-# all dbs, but specials and history ones
-uri = URI("#{couch}/_all_dbs")
-dbs = []
-
-if ARGV[2] 
-    dbs << ARGV[2]
-else
-    JSON.parse(Net::HTTP.get(uri))
-        .select { |db| !db.start_with?("_") && !db.end_with?("_history")}
-        .each { |db| dbs << db}
+def onchange(db,change)
+    if change["doc"].has_key?("metadata") && !change["doc"].has_key?("deleted")
+        # to history
+        doc = change["doc"].clone
+        doc["_id"] = "#{doc["_id"]}:#{doc["_rev"]}"
+        doc.delete("_rev")
+        doc.delete("_attachments")
+        response = post("#{@couch}/#{db}_history",doc)
+        puts response
+        
+        # to elasticsearch
+        doc = change["doc"].clone
+        doc["id"] = doc["_id"]
+        doc["rev"] = doc["_rev"]
+        doc.delete("_id")
+        doc.delete("_rev")
+        doc.delete("_attachments")
+        response = post("#{@es}/#{db}/#{doc["metadata"]["type"]}/#{URI.encode(doc["id"])}",doc)
+        puts response
+    elsif change["doc"].has_key?("_deleted")
+        # delete from es
+        doc = change["doc"].clone
+        q = URI.encode("id:\"#{doc["_id"]}\"");
+        response = delete("#{@es}/#{db}/_query?q=#{q}")
+        puts response
+    end
 end
 
-dbs.each { |db|
+def listen_changes(db)
+    puts "listen #{db}"
+    while true do
+        # create last_seq if not exists
+        system("echo 0 > /tmp/changes_#{db}.last_seq") unless File.exists?("/tmp/changes_#{db}.last_seq") 
 
-    # rewrite vars
-    id = "#{@id}.#{db}"
+        # reads last sequence
+        last_file = File.open("/tmp/changes_#{db}.last_seq",'r');
+        last_seq = last_file.gets.to_i;
+        last_file.close
 
-    # create index if not exists
-    puts put("#{es}/#{db}",{});
-    # create history db if not exists
-    puts put("#{couch}/#{db}_history",{});
+        # get latest changes
+        changes_uri = URI("#{@couch}/#{db}/_changes?since=#{last_seq}&limit=500&feed=longpoll&include_docs=true");
+        changes = JSON.parse(Net::HTTP.get(changes_uri))['results']
+        changes.each { |change| 
+            onchange(db,change)
+            last_seq = change["seq"]
+        }
 
-    # create last_seq if not exists
-    system("echo 0 > /tmp/#{id}.last_seq") unless File.exists?("/tmp/#{id}.last_seq") 
+        # writes last_seq
+        system("echo #{last_seq} > /tmp/changes_#{db}.last_seq")
+    end
+end
 
-    # reads last sequence
-    last_file = File.open("/tmp/#{id}.last_seq",'r');
-    last_seq = last_file.gets.to_i;
-    last_file.close
+puts "Starting..."
 
-    # get latest changes
-    changes_uri = URI("#{couch}/#{db}/_changes?since=#{last_seq}&limit=500&feed=normal&include_docs=true");
-    puts "URL: #{changes_uri}"
+sleep 10
 
-    changes = JSON.parse(Net::HTTP.get(changes_uri))['results']
+# read args
+@couch = ARGV[0] || "http://localhost:5984";
+@es = ARGV[1] || "http://localhost:9200";
 
-    changes.each { |change| 
-        last_seq = change["seq"]
+# hold the threads
+dbs_changes = {}
 
-        if change["doc"].has_key?("metadata") && !change["doc"].has_key?("deleted")
-            # to history
-            doc = change["doc"].clone
-            doc["_id"] = "#{doc["_id"]}:#{doc["_rev"]}"
-            doc.delete("_rev")
-            doc.delete("_attachments")
-            response = post("#{couch}/#{db}_history",doc)
-            puts response
-            
-            # to elasticsearch
-            doc = change["doc"].clone
-            doc["id"] = doc["_id"]
-            doc["rev"] = doc["_rev"]
-            doc.delete("_id")
-            doc.delete("_rev")
-            doc.delete("_attachments")
-            response = post("#{es}/#{db}/#{doc["metadata"]["type"]}/#{URI.encode(doc["id"])}",doc)
-            puts response
-        elsif change["doc"].has_key?("_deleted")
-            # delete from es
-            doc = change["doc"].clone
-            q = URI.encode("id:\"#{doc["_id"]}\"");
-            response = delete("#{es}/#{db}/_query?q=#{q}")
-            puts response
+# listen dbs 
+dbs_thread = Thread.new do
+    while true do
+        update = get("#{@couch}/_db_updates?feed=longpoll");
+        puts update
+        Thread.new do
+            ok = update["ok"]
+            db = update["db_name"]
+            type = update["type"]
+            if ok && !db.start_with?("_") && !db.end_with?("_history") then
+                if type == "created" then
+                    puts "DB created: #{db}"
+                    puts put("#{@es}/#{db}",{});
+                    puts put("#{@couch}/#{db}_history",{});
+                    system("echo 0 > /tmp/changes_#{db}.last_seq")
+                    dbs_changes[db] = Thread.new do
+                        listen_changes(db)
+                    end
+                elsif type == 'deleted'
+                    puts "DB deleted: #{db}"
+                    dbs_changes[db].stop();
+                    puts delete("#{@es}/#{db}");
+                    puts delete("#{@couch}/#{db}_history");
+                    system("echo 0 > /tmp/changes_#{db}.last_seq")
+                end
+            end
         end
-    }
+    end
+end
 
-    # writes last sequence
-    system("echo #{last_seq} > /tmp/#{id}.last_seq")
+# initial run
+get("#{@couch}/_all_dbs")
+     .select { |db| !db.start_with?("_") && !db.end_with?("_history")}
+     .each { |db| 
+        puts "DB existed: #{db}"
+        # create index and history if not exists
+        puts put("#{@es}/#{db}",{});
+        puts put("#{@couch}/#{db}_history",{});
 
-}
+        dbs_changes[db] = Thread.new do
+            listen_changes(db)
+        end
+     }
+        
 
-puts "Done"
+while true do
+    sleep 10
+end
 
