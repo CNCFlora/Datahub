@@ -27,6 +27,8 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/apache2.pid
 
+RUN gem install small-ops
+
 ADD supervisord.conf /etc/supervisor/conf.d/proxy.conf
 ADD bot.rb /root/bot.rb
 RUN chmod +x /root/bot.rb
