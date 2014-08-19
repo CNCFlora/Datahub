@@ -9,8 +9,8 @@ service couchdb stop
 sed -i -e 's/;bind_address = 127.0.0.1/bind_address = 0.0.0.0/' /etc/couchdb/local.ini
 service couchdb start
 
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.0.deb -O /root/elasticsearch-1.2.0.deb
-dpkg -i /root/elasticsearch-1.2.0.deb
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.deb -O /root/elasticsearch-1.3.1.deb
+dpkg -i /root/elasticsearch-1.3.1.deb
 service elasticsearch start
 
 curl -X PUT http://localhost:5984/cncflora
