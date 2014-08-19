@@ -7,8 +7,8 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     apt-get install -y oracle-java7-installer
 
-RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.deb -O /root/elasticsearch-1.3.1.deb && \
-    dpkg -i /root/elasticsearch-1.3.1.deb
+RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.2.deb -O /root/elasticsearch-1.3.2.deb && \
+    dpkg -i /root/elasticsearch-1.3.2.deb
 
 RUN apt-get install supervisor couchdb wget -y
 
@@ -27,10 +27,11 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/apache2.pid
 
-RUN gem install small-ops
+RUN gem install small-ops -v 0.0.30
 
 ADD supervisord.conf /etc/supervisor/conf.d/proxy.conf
 ADD bot.rb /root/bot.rb
+ADD log4j.properties /root/log4j.properties
 RUN chmod +x /root/bot.rb
 
 VOLUME ["/var/lib/couchdb"]
