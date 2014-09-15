@@ -151,7 +151,12 @@ get("#{@couch}/_all_dbs")
      }
         
 
-while true do
+start = Time.now.to_i
+puts "Started #{start}"
+time_span = (3 * 60 * 60)
+while Time.now.to_i < start + time_span
     sleep 10
 end
+
+puts "Ended #{Time.now.to_i}"
 

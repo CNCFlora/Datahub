@@ -31,8 +31,10 @@ RUN gem install small-ops -v 0.0.30
 
 ADD supervisord.conf /etc/supervisor/conf.d/proxy.conf
 ADD bot.rb /root/bot.rb
+ADD bot.sh /root/bot.sh
 ADD log4j.properties /root/log4j.properties
 RUN chmod +x /root/bot.rb
+RUN chmod +x /root/bot.sh
 
 VOLUME ["/var/lib/couchdb"]
 
